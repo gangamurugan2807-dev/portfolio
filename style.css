@@ -1,31 +1,25 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body
+{
+  margin: 0;
+  background: black;
+  height: 500vh;
 }
 
-body {
-
-    height: 500vh; /* controls scroll length */
-
-    background: black;
-
+.scroll-container
+{
+  position: relative;
 }
 
-.scroll-container {
-
-    position: sticky;
-
-    top: 0;
-
-    height: 100vh;
-
+canvas
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
 }
 
-canvas {
-
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-
+.spacer
+{
+  height: 500vh;
 }
