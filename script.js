@@ -2,7 +2,7 @@ const frameCount = 240;
 
 const currentFrame = index =>
 (
-  `frames/ezgif-frame-${String(index).padStart(3, '0')}.jpg`
+  `frames/ezgif-frames-${String(index).padStart(3, '0')}.jpg`
 );
 
 
