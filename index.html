@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Mahalakshmi G M | Resume Portfolio</title>
+<title>Mahalakshmi G M | Portfolio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -16,12 +15,13 @@ font-family: 'Segoe UI', sans-serif;
 }
 
 body{
-background:#ffffff;
-color:#222;
+color:#ffffff;
 overflow-x:hidden;
+background:black;
 }
 
-/* Animation canvas background */
+
+/* Scroll Animation Canvas */
 
 #animationCanvas{
 
@@ -30,12 +30,15 @@ top:0;
 left:0;
 width:100%;
 height:100%;
+
 z-index:-1;
-opacity:0.08; /* watermark transparency */
+
+opacity:0.35;
 
 }
 
-/* Content container */
+
+/* Main container */
 
 .container{
 
@@ -46,19 +49,19 @@ padding:50px 0;
 
 }
 
+
 /* Header */
 
 header{
 
 text-align:center;
-padding:40px 0;
+margin-bottom:40px;
 
 }
 
 header h1{
 
 font-size:42px;
-color:#0a2a66;
 margin-bottom:10px;
 
 }
@@ -66,36 +69,51 @@ margin-bottom:10px;
 header h2{
 
 font-weight:normal;
-color:#555;
+color:#ddd;
 
 }
 
-/* Section */
+
+/* Transparent Glass Sections */
 
 section{
 
-background:white;
+background: rgba(255,255,255,0.08);
+
+backdrop-filter: blur(8px);
+
+-webkit-backdrop-filter: blur(8px);
+
 margin:25px 0;
+
 padding:25px;
-border-radius:10px;
-box-shadow:0 4px 15px rgba(0,0,0,0.08);
+
+border-radius:12px;
+
+border:1px solid rgba(255,255,255,0.2);
+
+box-shadow:0 4px 20px rgba(0,0,0,0.3);
 
 }
+
 
 section h3{
 
-color:#0a2a66;
 margin-bottom:15px;
-border-bottom:2px solid #eee;
+
+border-bottom:1px solid rgba(255,255,255,0.3);
+
 padding-bottom:5px;
 
 }
+
 
 p{
 
 line-height:1.7;
 
 }
+
 
 ul{
 
@@ -104,22 +122,22 @@ line-height:1.7;
 
 }
 
-/* Highlight */
 
 .highlight{
 
-color:#0a2a66;
 font-weight:bold;
+color:#00e0ff;
 
 }
+
 
 /* Footer */
 
 footer{
 
 text-align:center;
-padding:20px;
-color:#777;
+margin-top:40px;
+color:#ccc;
 
 }
 
@@ -133,6 +151,7 @@ color:#777;
 
 
 <div class="container">
+
 
 <header>
 
@@ -150,7 +169,7 @@ color:#777;
 
 <p>
 
-Motivated and enthusiastic Electronics and Communication Engineering student with strong academic performance and hands-on project experience in home automation and embedded systems. Seeking opportunities to apply technical skills, enhance knowledge, and contribute to innovative engineering solutions.
+Motivated and enthusiastic Electronics and Communication Engineering student with strong academic performance and hands-on project experience in home automation and embedded systems. Seeking opportunities to apply technical skills and contribute to innovative engineering solutions.
 
 </p>
 
@@ -168,12 +187,11 @@ Motivated and enthusiastic Electronics and Communication Engineering student wit
 
 Government College of Engineering, Tirunelveli<br>
 
-CGPA: 8.05 (Current)<br><br>
+CGPA: 8.05<br><br>
 
+<span class="highlight">HSC</span><br>
 
-<span class="highlight">Higher Secondary Education</span><br>
-
-HNUC Hr. Sec School, T.N. Puthukudi, Puliangudi<br>
+HNUC Hr Sec School, Puliangudi<br>
 
 12th Marks: 543 / 600<br>
 
@@ -193,9 +211,9 @@ HNUC Hr. Sec School, T.N. Puthukudi, Puliangudi<br>
 
 <li>
 
-<span class="highlight">Home Automation System</span><br>
+<span class="highlight">Home Automation</span><br>
 
-Designed a system to control home appliances remotely for convenience and energy efficiency.
+Control home appliances automatically.
 
 </li>
 
@@ -203,7 +221,7 @@ Designed a system to control home appliances remotely for convenience and energy
 
 <span class="highlight">Smart Lock System</span><br>
 
-Developed a secure locking system using embedded technology to improve safety and access control.
+Embedded security lock system.
 
 </li>
 
@@ -221,7 +239,7 @@ Developed a secure locking system using embedded technology to improve safety an
 
 <span class="highlight">IPCS Global</span><br>
 
-Completed internship training and gained practical knowledge in embedded systems, electronics applications, and real-time implementation.
+Embedded systems internship and practical training.
 
 </p>
 
@@ -237,13 +255,11 @@ Completed internship training and gained practical knowledge in embedded systems
 
 <li>Embedded Systems</li>
 
-<li>Electronics Circuit Design</li>
+<li>C Programming</li>
 
-<li>Basic Programming</li>
+<li>Electronics</li>
 
-<li>Problem Solving</li>
-
-<li>Technical Learning Ability</li>
+<li>Circuit Design</li>
 
 </ul>
 
@@ -261,7 +277,7 @@ Email: yourmail@email.com<br>
 
 Phone: +91-XXXXXXXXXX<br>
 
-Location: Tirunelveli, Tamil Nadu
+Location: Tirunelveli
 
 </p>
 
@@ -271,10 +287,9 @@ Location: Tirunelveli, Tamil Nadu
 
 <footer>
 
-© 2026 Mahalakshmi G M | Resume Portfolio
+© 2026 Mahalakshmi G M
 
 </footer>
-
 
 
 </div>
@@ -286,24 +301,17 @@ Location: Tirunelveli, Tamil Nadu
 
 const frameCount = 240;
 
-
 const canvas = document.getElementById("animationCanvas");
 
 const context = canvas.getContext("2d");
 
 
 canvas.width = window.innerWidth;
-
 canvas.height = window.innerHeight;
 
 
 const images = [];
-
-const imageSeq = {
-
-frame: 0
-
-};
+const imageSeq = { frame: 0 };
 
 
 for(let i=1;i<=frameCount;i++){
@@ -326,13 +334,14 @@ context.drawImage(images[0],0,0,canvas.width,canvas.height);
 };
 
 
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', ()=>{
 
 const scrollTop = document.documentElement.scrollTop;
 
 const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
 
 const scrollFraction = scrollTop / maxScroll;
+
 
 const frameIndex = Math.min(
 
@@ -357,7 +366,6 @@ context.drawImage(images[frameIndex],0,0,canvas.width,canvas.height);
 window.addEventListener('resize', ()=>{
 
 canvas.width = window.innerWidth;
-
 canvas.height = window.innerHeight;
 
 });
