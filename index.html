@@ -1,22 +1,371 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Scrollable Frame Animation</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+<meta charset="UTF-8">
+<title>Mahalakshmi G M | Resume Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+background:#ffffff;
+color:#222;
+overflow-x:hidden;
+}
+
+/* Animation canvas background */
+
+#animationCanvas{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+opacity:0.08; /* watermark transparency */
+
+}
+
+/* Content container */
+
+.container{
+
+width:85%;
+max-width:1000px;
+margin:auto;
+padding:50px 0;
+
+}
+
+/* Header */
+
+header{
+
+text-align:center;
+padding:40px 0;
+
+}
+
+header h1{
+
+font-size:42px;
+color:#0a2a66;
+margin-bottom:10px;
+
+}
+
+header h2{
+
+font-weight:normal;
+color:#555;
+
+}
+
+/* Section */
+
+section{
+
+background:white;
+margin:25px 0;
+padding:25px;
+border-radius:10px;
+box-shadow:0 4px 15px rgba(0,0,0,0.08);
+
+}
+
+section h3{
+
+color:#0a2a66;
+margin-bottom:15px;
+border-bottom:2px solid #eee;
+padding-bottom:5px;
+
+}
+
+p{
+
+line-height:1.7;
+
+}
+
+ul{
+
+margin-left:20px;
+line-height:1.7;
+
+}
+
+/* Highlight */
+
+.highlight{
+
+color:#0a2a66;
+font-weight:bold;
+
+}
+
+/* Footer */
+
+footer{
+
+text-align:center;
+padding:20px;
+color:#777;
+
+}
+
+</style>
+
+</head>
 <body>
 
-<div class="scroll-container">
 
-  <canvas id="canvas"></canvas>
+<canvas id="animationCanvas"></canvas>
 
-  <div class="spacer"></div>
+
+<div class="container">
+
+<header>
+
+<h1>Mahalakshmi G M</h1>
+
+<h2>Electronics and Communication Engineering Student</h2>
+
+</header>
+
+
+
+<section>
+
+<h3>Career Objective</h3>
+
+<p>
+
+Motivated and enthusiastic Electronics and Communication Engineering student with strong academic performance and hands-on project experience in home automation and embedded systems. Seeking opportunities to apply technical skills, enhance knowledge, and contribute to innovative engineering solutions.
+
+</p>
+
+</section>
+
+
+
+<section>
+
+<h3>Education</h3>
+
+<p>
+
+<span class="highlight">B.E Electronics and Communication Engineering</span><br>
+
+Government College of Engineering, Tirunelveli<br>
+
+CGPA: 8.05 (Current)<br><br>
+
+
+<span class="highlight">Higher Secondary Education</span><br>
+
+HNUC Hr. Sec School, T.N. Puthukudi, Puliangudi<br>
+
+12th Marks: 543 / 600<br>
+
+10th Marks: 450 / 500
+
+</p>
+
+</section>
+
+
+
+<section>
+
+<h3>Projects</h3>
+
+<ul>
+
+<li>
+
+<span class="highlight">Home Automation System</span><br>
+
+Designed a system to control home appliances remotely for convenience and energy efficiency.
+
+</li>
+
+<li>
+
+<span class="highlight">Smart Lock System</span><br>
+
+Developed a secure locking system using embedded technology to improve safety and access control.
+
+</li>
+
+</ul>
+
+</section>
+
+
+
+<section>
+
+<h3>Internship</h3>
+
+<p>
+
+<span class="highlight">IPCS Global</span><br>
+
+Completed internship training and gained practical knowledge in embedded systems, electronics applications, and real-time implementation.
+
+</p>
+
+</section>
+
+
+
+<section>
+
+<h3>Skills</h3>
+
+<ul>
+
+<li>Embedded Systems</li>
+
+<li>Electronics Circuit Design</li>
+
+<li>Basic Programming</li>
+
+<li>Problem Solving</li>
+
+<li>Technical Learning Ability</li>
+
+</ul>
+
+</section>
+
+
+
+<section>
+
+<h3>Contact</h3>
+
+<p>
+
+Email: yourmail@email.com<br>
+
+Phone: +91-XXXXXXXXXX<br>
+
+Location: Tirunelveli, Tamil Nadu
+
+</p>
+
+</section>
+
+
+
+<footer>
+
+© 2026 Mahalakshmi G M | Resume Portfolio
+
+</footer>
+
+
 
 </div>
 
-<script src="script.js"></script>
+
+
+<script>
+
+
+const frameCount = 240;
+
+
+const canvas = document.getElementById("animationCanvas");
+
+const context = canvas.getContext("2d");
+
+
+canvas.width = window.innerWidth;
+
+canvas.height = window.innerHeight;
+
+
+const images = [];
+
+const imageSeq = {
+
+frame: 0
+
+};
+
+
+for(let i=1;i<=frameCount;i++){
+
+const img = new Image();
+
+const num = String(i).padStart(3,'0');
+
+img.src = `frames/ezgif-frame-${num}.jpg`;
+
+images.push(img);
+
+}
+
+
+images[0].onload = function(){
+
+context.drawImage(images[0],0,0,canvas.width,canvas.height);
+
+};
+
+
+window.addEventListener('scroll', () => {
+
+const scrollTop = document.documentElement.scrollTop;
+
+const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+const scrollFraction = scrollTop / maxScroll;
+
+const frameIndex = Math.min(
+
+frameCount - 1,
+
+Math.floor(scrollFraction * frameCount)
+
+);
+
+
+requestAnimationFrame(()=>{
+
+context.clearRect(0,0,canvas.width,canvas.height);
+
+context.drawImage(images[frameIndex],0,0,canvas.width,canvas.height);
+
+});
+
+});
+
+
+window.addEventListener('resize', ()=>{
+
+canvas.width = window.innerWidth;
+
+canvas.height = window.innerHeight;
+
+});
+
+
+</script>
+
+
 
 </body>
 </html>
